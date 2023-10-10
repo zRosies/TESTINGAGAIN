@@ -1,0 +1,12 @@
+[
+    {
+        "firstName":"Jeremy",
+        "lastName": "Zucker",
+        "role": "Software Engineer",
+        "salary": 2000,
+        "phone": "21443535",
+        "email": "jemm@gmai.com",
+        "address": "54 lola street"
+        
+    }
+]
