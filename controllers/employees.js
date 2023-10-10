@@ -20,7 +20,7 @@ const getAllEmployees = async(req, res)=>{
 
         }
         else if(req.header('apiKey') != apiKey){
-            res.status(404).json('Wrong APIKEY');;
+            res.status(404).json('APIKEY NOT FOUND');;
 
         }
         
@@ -64,7 +64,7 @@ const createEmployee = async(req, res)=>{
 
         }
         else if(req.header('apiKey') !== apiKey){
-            res.status(400).json('Wrong APIKEY');;
+            res.status(400).json('APIKEY NOT FOUND');;
 
         }
         
