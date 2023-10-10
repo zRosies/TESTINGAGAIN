@@ -53,14 +53,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Contact"
+                  "$ref": "#/components/schemas/employee"
                 }
               }
             }
           },
           "responses": {
             "201": {
-              "description": "Contact created successfully"
+              "description": "employee created successfully"
             },
             "500": {
               "description": "Internal server error"
@@ -70,7 +70,7 @@
       },
       "/employees/{id}": {
         "get": {
-          "summary": "Get a contact by ID",
+          "summary": "Get a employee by ID",
           "parameters": [
             {
               "name": "id",
@@ -79,7 +79,7 @@
               "schema": {
                 "type": "string"
               },
-              "description": "Contact ID"
+              "description": "employee ID"
             }
           ],
           "responses": {
@@ -98,7 +98,7 @@
           }
         },
         "put": {
-          "summary": "Update a contact by ID",
+          "summary": "Update a employee by ID",
           "parameters": [
             {
               "name": "id",
@@ -107,23 +107,23 @@
               "schema": {
                 "type": "string"
               },
-              "description": "Contact ID"
+              "description": "employee ID"
             }
           ],
           "requestBody": {
-            "description": "Updated contact object",
+            "description": "Updated employee object",
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Contact"
+                  "$ref": "#/components/schemas/employee"
                 }
               }
             }
           },
           "responses": {
             "204": {
-              "description": "Contact updated successfully"
+              "description": "employee updated successfully"
             },
             "500": {
               "description": "Internal server error"
@@ -131,7 +131,7 @@
           }
         },
         "delete": {
-          "summary": "Delete a contact by ID",
+          "summary": "Delete a employee by ID",
           "parameters": [
             {
               "name": "id",
@@ -140,12 +140,12 @@
               "schema": {
                 "type": "string"
               },
-              "description": "Contact ID"
+              "description": "employee ID"
             }
           ],
           "responses": {
             "200": {
-              "description": "Contact deleted successfully"
+              "description": "employee deleted successfully"
             },
             "500": {
               "description": "Internal server error"
@@ -156,7 +156,7 @@
     },
     "components": {
       "schemas": {
-        "Contact": {
+        "employee": {
           "type": "object",
           "properties": {
             "firstName":{
