@@ -72,7 +72,7 @@
     },
     "/employees/{id}": {
       "get": {
-        "summary": "NOT IMPLEMENTED YET",
+        "summary": "Get employee by Id",
         "tags": ["Employees"],
         "parameters": [
           {
@@ -221,8 +221,102 @@
           }
         }
       }
+    },     
+    "/users/{id}": {
+      "get": {
+        "summary": "Get users by id",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        
+       
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "404": {
+            "description": "No data found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      
+      "put": {
+        "summary": "NOT IMPLEMENTED YET",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Updated user object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Employee updated successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "NOT IMPLEMENTED YET",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee deleted successfully"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      
+      }
+    
     }
-  },
+  }
+  ,
   "components": {
     "schemas": {
       "employee": {

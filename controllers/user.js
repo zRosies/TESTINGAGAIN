@@ -1,3 +1,4 @@
+const  ObjectId  = require('mongodb').ObjectId;
 const mongodb = require('../connection/db');
 
 const apiKey= process.env.APIKEY;
@@ -75,4 +76,29 @@ const createUser = async(req, res)=>{
 
 }
 
-module.exports={getAllUsers, createUser};
+
+const getUserById = async(req,res)=>{
+    const userId = new ObjectId(req.params.id);
+
+    const result = await mongodb.getDb().db('company').collection('users').findOne({_id:userId});
+
+    try{
+        
+        if (result.length === 0) {
+            res.status(404).json({ message: "No data found" });
+        } 
+        else {
+            res.setHeader("Content-Type", "application/json");
+            res.status(200).json(result); 
+        }
+       
+      
+    }
+    catch (error) {
+    console.error("Error querying the database:", error);
+    res.status(500).json({ message: "Internal server error" });
+    }
+
+}
+
+module.exports={getAllUsers, createUser, getUserById};

@@ -82,14 +82,33 @@ const createEmployee = async(req, res)=>{
 
 }
 
-const getSingleEmployee = async(req, res)=>{
-    // const result = 
-    const result = await mongodb.getDb().db('company').collection('employees').find();
-}
+const getEmployeeById = async(req,res)=>{
+    const userId = new ObjectId(req.params.id);
+    // console.log(userId)
+    const result = await mongodb.getDb().db('company').collection('employees').findOne({_id:userId});
 
+    try{
+        
+        if (result.length === 0) {
+            res.status(404).json({ message: "No data found" });
+        } 
+        else {
+            res.setHeader("Content-Type", "application/json");
+            res.status(200).json(result); 
+        }
+       
+      
+    }
+    catch (error) {
+    console.error("Error querying the database:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+
+}
 
 module.exports = {
     getAllEmployees, 
-    createEmployee
+    createEmployee,
+    getEmployeeById
 
 }
