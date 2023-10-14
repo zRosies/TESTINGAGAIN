@@ -3,7 +3,7 @@
   "info": {
     "title": "Employee API",
     "version": "1.0.0",
-    "description": "API for managing the Company's employees"
+    "description": "API for managing the Company's employees and their user names!"
   },
 
   "paths": {
@@ -189,7 +189,7 @@
         }
       },
       "post": {
-        "summary": "Create a new user | Not Implemented Yet!!",
+        "summary": "Create a new user",
         
         "tags": ["Users"],
         "parameters": [
@@ -207,14 +207,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/employee"
+                "$ref": "#/components/schemas/users"
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Employee created successfully"
+            "description": "User created successfully"
           },
           "500": {
             "description": "Internal server error"
@@ -251,7 +251,23 @@
           }
         },
         "required": ["firstName", "lastName", "role", "email", "address", "phone", "salary"]
+      },
+      "users":{
+        "type":"object",
+        "properties":{
+            "userName":{
+              "type":"string" 
+            },
+            "password":{
+              "type":"string"
+
+            }
+        },
+        "required":["userName","password"]
+      
       }
     }
   }
+      
+
 }

@@ -34,4 +34,45 @@ const getAllUsers = async(req, res)=>{
 
 }
 
-module.exports={getAllUsers};
+const createUser = async(req, res)=>{
+    const employeeInfo = {
+        userName : req.body.userName,
+        password: req.body.password
+       
+    }
+    
+    try {
+
+        if(req.header('apiKey') === apiKey){
+            const result= await mongodb.getDb().db('company').collection('users').insertOne(employeeInfo);
+            
+            if(result.acknowledged){
+                
+                res.setHeader('Content-Type', 'application/json');
+                // console.log(result)
+                res.status(201).json(result.insertedId + ' added to the database');
+               
+               
+            }
+
+        }
+        else if(req.header('apiKey') !== apiKey){
+            res.status(400).json('APIKEY NOT FOUND');;
+
+        }
+        
+        else{
+            
+            res.status(400).json({message:'no data found'});
+         
+            
+        }
+    } catch (error) {
+        
+        console.log("Error querying the database:" , error);
+        res.status(500).json({message: "internal server error"});
+    }
+
+}
+
+module.exports={getAllUsers, createUser};
