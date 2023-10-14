@@ -1,0 +1,241 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Employee API",
+      "version": "1.0.0",
+      "description": "API for managing the Company's employees"
+    },
+    "servers": [
+      {
+        "url": "https://api.example.com" 
+      }
+    ],
+    "tags": [
+      {
+        "name": "employee",
+        "description": "Everything about your Employees",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://swagger.io"
+        }
+      },
+      {
+        "name": "users",
+        "description": "Access to Users",
+        "externalDocs": {
+          "description": "Find out more about our users",
+          "url": "http://swagger.io"
+        }
+      }
+    ],
+    "paths": {
+      "/employees": {
+        "get": {
+          "summary": "Get all employees",
+          "tags": ["employee"],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                  
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new employee",
+          "tags": ["employee"],
+          "requestBody": {
+            "description": "Employee data to create",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+               
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Employee created successfully"
+            }
+          }
+        }
+      },
+      "/employees/{id}": {
+        "get": {
+          "summary": "Get employee by ID",
+          "tags": ["employee"],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update employee by ID",
+          "tags": ["employee"],
+          "parameters": [
+           
+          ],
+          "requestBody": {
+            "description": "Updated employee data",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                 
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Employee updated successfully"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete employee by ID",
+          "tags": ["employee"],
+          "parameters": [
+            
+          ],
+          "responses": {
+            "200": {
+              "description": "Employee deleted successfully"
+            }
+          }
+        }
+      }
+    },
+    "tags": [
+        {
+          "name": "Users",
+          "description": "Everything about your Employees",
+          "externalDocs": {
+            "description": "Find out more",
+            "url": "http://swagger.io"
+          }
+        },
+        {
+          "name": "users",
+          "description": "Access to Users",
+          "externalDocs": {
+            "description": "Find out more about our users",
+            "url": "http://swagger.io"
+          }
+        }
+      ],
+      "paths": {
+        "/employees": {
+          "get": {
+            "summary": "Get all employees",
+            "tags": ["employee"],
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                    
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "post": {
+            "summary": "Create a new employee",
+            "tags": ["employee"],
+            "requestBody": {
+              "description": "Employee data to create",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                 
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Employee created successfully"
+              }
+            }
+          }
+        },
+        "/employees/{id}": {
+          "get": {
+            "summary": "Get employee by ID",
+            "tags": ["employee"],
+            "parameters": [
+              
+            ],
+            "responses": {
+              "200": {
+                "description": "Successful response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "put": {
+            "summary": "Update employee by ID",
+            "tags": ["employee"],
+            "parameters": [
+             
+            ],
+            "requestBody": {
+              "description": "Updated employee data",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                   
+                  }
+                }
+              }
+            },
+            "responses": {
+              "204": {
+                "description": "Employee updated successfully"
+              }
+            }
+          },
+          "delete": {
+            "summary": "Delete employee by ID",
+            "tags": ["employee"],
+            "parameters": [
+              
+            ],
+            "responses": {
+              "200": {
+                "description": "Employee deleted successfully"
+              }
+            }
+          }
+        }
+      }
+  }
