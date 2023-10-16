@@ -8,8 +8,8 @@ const apiKey= process.env.APIKEY;
 const getAllEmployees = async(req, res)=>{
     const result = await mongodb.getDb().db('company').collection('employees').find().toArray();
 
-    console.log(req.header('apiKey'));
-    console.log(apiKey)
+    // console.log(req.header('apiKey'));
+    // console.log(apiKey)
     try {
         if(req.header('apiKey') === apiKey){
             
@@ -106,9 +106,72 @@ const getEmployeeById = async(req,res)=>{
 
 }
 
+const deleteEmployee = async (req, res, next)=>{
+    const employeeId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db('company').collection('employees').deleteOne({_id:employeeId});
+    console.log(response)
+    
+    try {
+           
+        if(response.deletedCount > 0){
+                res.status(200).json(`${employeeId} deleted successfuly`)
+            }
+    
+        else{
+            res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
+        }
+        
+    } catch (error) {
+        console.error("Error querying the database:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+
+
+}
+
+const updateEmployee = async (req, res, next) =>{
+    const employeeId = new ObjectId(req.params.id);
+
+    const newEmployee = {
+
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        role: req.body.role,
+        salary: req.body.salary,
+        phone: req.body.phone,
+        email: req.body.email,
+        address: req.body.address
+    }
+
+    const result = await mongodb.getDb().db('company').collection('employees').replaceOne({_id:employeeId}, newEmployee);
+
+    
+    try {
+   
+           
+        if(result.modifiedCount > 0){
+                res.status(204).json(`${employeeId} updated successfuly`)
+       
+        }
+        else{
+            res.status(500).json(response.error || 'Some error occurred while updtaing the contact.');
+        }
+        
+    } catch (error) {
+        console.error("Error querying the database:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+
+
+
+
+}
+
 module.exports = {
     getAllEmployees, 
     createEmployee,
-    getEmployeeById
+    getEmployeeById,
+    deleteEmployee,
+    updateEmployee
 
 }

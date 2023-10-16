@@ -101,7 +101,7 @@
         }
       },
       "put": {
-        "summary": "NOT IMPLEMENTED YET",
+        "summary": "Updated an employee by Id",
         "tags": ["Employees"],
         "parameters": [
           {
@@ -135,7 +135,7 @@
         }
       },
       "delete": {
-        "summary": "NOT IMPLEMENTED YET",
+        "summary": "Delete an employee by Id",
         "tags": ["Employees"],
         "parameters": [
           {
@@ -256,7 +256,7 @@
       },
       
       "put": {
-        "summary": "NOT IMPLEMENTED YET",
+        "summary": "Update an user by Id",
         "tags": ["Users"],
         "parameters": [
           {
@@ -290,7 +290,7 @@
         }
       },
       "delete": {
-        "summary": "NOT IMPLEMENTED YET",
+        "summary": "Delete an user by Id",
         "tags": ["Users"],
         "parameters": [
           {

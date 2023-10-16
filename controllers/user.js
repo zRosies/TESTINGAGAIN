@@ -81,7 +81,7 @@ const getUserById = async(req,res)=>{
     const userId = new ObjectId(req.params.id);
 
     const result = await mongodb.getDb().db('company').collection('users').findOne({_id:userId});
-
+    console.log(result)
     try{
         
         if (result.length === 0) {
@@ -101,4 +101,71 @@ const getUserById = async(req,res)=>{
 
 }
 
-module.exports={getAllUsers, createUser, getUserById};
+const updateUser = async(req, res)=>{
+    const userId = new ObjectId(req.params.id);
+    const employeeInfo = {
+        userName : req.body.userName,
+        password: req.body.password
+       
+    }
+    
+    try {
+
+      
+            const result= await mongodb.getDb().db('company').collection('users').replaceOne({_id:userId}, employeeInfo);
+            
+        if(result.modifiedCount > 0){
+                
+                res.setHeader('Content-Type', 'application/json');
+                // console.log(result)
+                res.status(204).json(`${userId} updated successfuly`);
+        }                      
+        else{
+            
+            res.status(400).json({message:'no data found'});
+         
+            
+        }
+    } catch (error) {
+        
+        console.log("Error querying the database:" , error);
+        res.status(500).json({message: "internal server error"});
+    }
+
+}
+
+
+const deleteUserById = async(req,res)=>{
+    const userId = new ObjectId(req.params.id);
+
+    const result = await mongodb.getDb().db('company').collection('users').deleteOne({_id:userId});
+
+    try{
+       
+            
+        if(result.deletedCount > 0){
+            
+            res.setHeader('Content-Type', 'application/json');
+            // console.log(result)
+            res.status(200).json(`${userId} deleted successfuly`);
+            
+            
+        }
+   
+        else {
+            res.setHeader("Content-Type", "application/json");
+            res.status(200).json(result); 
+        }
+       
+      
+    }
+    catch (error) {
+    console.error("Error querying the database:", error);
+    res.status(500).json({ message: "Internal server error" });
+    }
+
+}
+
+
+
+module.exports={getAllUsers, createUser, getUserById, updateUser, deleteUserById};
