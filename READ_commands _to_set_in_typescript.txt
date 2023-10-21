@@ -1,11 +1,20 @@
+
+---- module that has the  typescript configs -------
+npm install ts-node -D
+
+-----------------installing nodemon-------------
+
+npm install --save-dev nodemon
+
+--------------------Dependencies config-------------
 {
-  "name": "pa-ts",
+   "name": "pa-ts",
   "version": "1.0.0",
   "description": "company",
-  "main": "server.ts",
+  "main": "server.ts", // path to your server file
   "scripts": {
     "start": "ts-node src/server.ts",
-    "dev": "nodemon --exec ts-node src/server.ts",
+    "dev": "nodemon --exec ts-node src/server.ts", // path to your server file
     "test": "test"
   },
   "author": "gustavo",
@@ -25,3 +34,5 @@
     "typescript": "^5.2.2"
   }
 }
+
+------------------------------------
