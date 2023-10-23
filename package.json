@@ -9,6 +9,9 @@
     "dev": "nodemon --exec ts-node src/server.ts",
     "test": "test"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "author": "gustavo",
   "license": "ISC",
   "devDependencies": {
