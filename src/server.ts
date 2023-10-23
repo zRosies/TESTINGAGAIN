@@ -12,7 +12,6 @@ const app = express();
 
 const PORT: any = process.env.PORT || 8080
 
-
 app.use(bodyParser.json())
     .use(cors({origin : "*"}))
     .use((req,res,next)=>{
